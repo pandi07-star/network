@@ -1,5 +1,5 @@
 
-var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var alp = "abcdefghijklmnopqrstuvwxyz";
 
 function caesarCipher() {
     var text = document.getElementById("caesarText").value.toLowerCase();
@@ -7,10 +7,10 @@ function caesarCipher() {
     var result = "";
 
     for (var i = 0; i < text.length; i++) {
-        var index = alphabet.indexOf(text[i]);
+        var index = alp.indexOf(text[i]);
 
         if (index !== -1) {
-            result += alphabet[index + key]; // no mod 26
+            result += alp[index + key]; 
         } else {
             result += text[i];
         }
@@ -18,25 +18,25 @@ function caesarCipher() {
     document.getElementById("caesarResult").value = result;
 }
 
-var keyMatrix = [
+var keym= [
     [3, 3],
     [2, 5]
 ];
 
-function hillCipher() {
+function hill() {
     var text = document.getElementById("hillText").value.toLowerCase();
 
     if (text.length !== 2) {
-        alert("Enter exactly 2 letters");
+        alert("Enter letter");
         return;
     }
 
-    var p1 = alphabet.indexOf(text[0]);
-    var p2 = alphabet.indexOf(text[1]);
+    var p1 = alp.indexOf(text[0]);
+    var p2 = alp.indexOf(text[1]);
 
-    var c1 = (keyMatrix[0][0] * p1 + keyMatrix[0][1] * p2) % 26;
-    var c2 = (keyMatrix[1][0] * p1 + keyMatrix[1][1] * p2) % 26;
+    var c1 = (keym[0][0] * p1 + keym[0][1] * p2) % 26;
+    var c2 = (keym[1][0] * p1 + keym[1][1] * p2) % 26;
 
     document.getElementById("hillResult").value =
-        alphabet[c1] + alphabet[c2];
+        alp[c1] + alp[c2];
 }
